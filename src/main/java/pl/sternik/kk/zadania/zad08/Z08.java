@@ -6,14 +6,15 @@ public class Z08 {
 
 	public static void main(String[] args) {
 		int[] tablica = pobierztabliceFajniej(args);
-		int[][] out = new int[tablica.length][];
+		String[][] out = new String[tablica.length][];
 		for (int i = 0; i <= tablica.length - 1; i++) {
-			out[i] = new int[tablica[i]];
+			out[i] = new String[tablica[i]];
 			for (int j = 0; j <= tablica[i] - 1; j++) {
-				out[i][j] = j;
+				out[i][j] = i+"-"+j;
 			}
 		}
 		wyswietl(out);
+		System.out.println("koniec");
 	}
 
 	private static int[] pobierztabliceFajniej(String[] args) {
@@ -35,11 +36,11 @@ public class Z08 {
 		return tablica;
 	}
 
-	private static void wyswietl(int[][] tablica) {
+	private static void wyswietl(String[][] tablica) {
 
 		for (int i = 0; i <= tablica.length - 1; i++) {
 			for (int j = 0; j <= tablica[i].length - 1; j++) {
-				System.out.print("[" + i + " , " + tablica[i][j] + "] ");
+				System.out.print(tablica[i][j]);
 			}
 			System.out.print("\n");
 		}
