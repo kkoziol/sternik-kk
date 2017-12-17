@@ -4,7 +4,7 @@ package pl.sternik.kk.zadania.zad02;
  * Hello world!
  *
  */
-public class App 
+public class App2
 {
     public static void main( String[] args )
     {
