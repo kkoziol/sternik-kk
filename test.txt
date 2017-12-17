@@ -1,4 +1,0 @@
-LICENSE
-README.md
-test.txt
-ale zmiany z GH
