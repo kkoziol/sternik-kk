@@ -6,7 +6,7 @@ public class Z05 {
         String[] tablica = { "Raz", "Dwa", "Trzy", "Cztery" };
 
         String tmp = zrobPetleFor(tablica);
-//        System.out.println(tmp);
+        System.out.println(tmp);
 
         tmp = zrobPetleForEach(tablica);
 //        System.out.println(tmp);
@@ -18,10 +18,11 @@ public class Z05 {
 
 	static String zrobPetleFor(String[] tablica) {
 		int i;
+		String tmp = "Petla FOR";
         for (i = 0; i <= tablica.length - 1; i++) {
-            System.out.println(tablica[i]);
+            tmp = tmp + "\n" +tablica[i];
         }
-        return "";
+        return tmp;
 	}
 	static String zrobPetleWhile(String[] tablica) {
 		int i;
