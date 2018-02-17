@@ -57,6 +57,7 @@ public class Z24 {
 			e.printStackTrace();
 			return null;
 		}finally {
+		    System.out.println("Fnally wywolane!");
 			input.close();
 		}
 	}
