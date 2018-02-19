@@ -9,7 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Z37 {
-/*
 	public static void main(String[] args) {
 		Z37 z37 = new Z37();
 
@@ -119,5 +118,4 @@ public class Z37 {
         }
         return fromFile;
     }
-    */
 }
