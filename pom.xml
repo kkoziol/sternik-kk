@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.sternik.kk.zadania</groupId>
@@ -25,7 +26,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>1.7.1</version>
+            <version>3.9.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -36,4 +37,66 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>generate-assertions</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.assertj</groupId>
+                        <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+                        <version>2.1.0</version>
+                        <configuration>
+                            <packages>
+                                <param>pl.sternik.kk.zadania.animals</param>
+                                <!--<param>your.second.package</param>-->
+                            </packages>
+                            <!--<classes>-->
+                            <!--<param>your.third.package.YourClass</param>-->
+                            <!--</classes>-->
+                            <cleanTargetDir>true</cleanTargetDir>
+                            <targetDir>src/test/java-generated</targetDir>
+                            <!--<entryPointClassPackage>my.entry.point.package</entryPointClassPackage>-->
+
+                            <generateAssertions>true</generateAssertions>
+                            <generateBddAssertions>false</generateBddAssertions>
+                            <generateSoftAssertions>false</generateSoftAssertions>
+                            <generateJUnitSoftAssertions>false</generateJUnitSoftAssertions>
+
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>gen</id>
+                                <phase>generate-test-sources</phase>
+                                <goals>
+                                    <goal>
+                                        generate-assertions
+                                    </goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>add-test-source</id>
+                                <phase>generate-test-sources</phase>
+                                <goals>
+                                    <goal>add-test-source</goal>
+                                </goals>
+                                <configuration>
+                                    <sources>
+                                        <source>src/test/java-generated</source>
+                                    </sources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
