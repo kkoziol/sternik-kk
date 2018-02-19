@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.sternik.kk.zadania</groupId>
@@ -37,6 +36,29 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>add-test-source</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/test/java-generated</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <profiles>
         <profile>
             <id>generate-assertions</id>
@@ -49,14 +71,14 @@
                         <configuration>
                             <packages>
                                 <param>pl.sternik.kk.zadania.animals</param>
-                                <!--<param>your.second.package</param>-->
+                                <!--<param>your.second.package</param> -->
                             </packages>
-                            <!--<classes>-->
-                            <!--<param>your.third.package.YourClass</param>-->
-                            <!--</classes>-->
+                            <!--<classes> -->
+                            <!--<param>your.third.package.YourClass</param> -->
+                            <!--</classes> -->
                             <cleanTargetDir>true</cleanTargetDir>
                             <targetDir>src/test/java-generated</targetDir>
-                            <!--<entryPointClassPackage>my.entry.point.package</entryPointClassPackage>-->
+                            <!--<entryPointClassPackage>my.entry.point.package</entryPointClassPackage> -->
 
                             <generateAssertions>true</generateAssertions>
                             <generateBddAssertions>false</generateBddAssertions>
@@ -73,25 +95,6 @@
                                         generate-assertions
                                     </goal>
                                 </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>build-helper-maven-plugin</artifactId>
-                        <version>3.0.0</version>
-                        <executions>
-                            <execution>
-                                <id>add-test-source</id>
-                                <phase>generate-test-sources</phase>
-                                <goals>
-                                    <goal>add-test-source</goal>
-                                </goals>
-                                <configuration>
-                                    <sources>
-                                        <source>src/test/java-generated</source>
-                                    </sources>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
